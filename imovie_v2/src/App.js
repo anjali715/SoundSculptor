@@ -49,14 +49,14 @@ const App = () => {
         // Add click event listener to waveform container
         waveformContainer.addEventListener('click', (event) => {
           const clickPosition = event.offsetX;
-          const newTime = wavesurfer.getCurrentTime();
+          const newTime = (clickPosition / waveformContainer.offsetWidth);
 
           // Update red progress line position
           progressLineRef.current.style.left = `${clickPosition}px`;
 
           // Seek all audio tracks to the clicked timestamp
           wavesurferInstances.current.forEach(wavesurfer => {
-            wavesurfer.seekTo(newTime / wavesurfer.getDuration());
+            wavesurfer.seekTo(newTime);
           });
         });
       });
@@ -140,9 +140,9 @@ const App = () => {
               <div id={`waveform-${track.id}`} className="waveform"></div>
             </div>
           ))}
-          <div className="timeline"></div>
           <div ref={progressLineRef} className="progress-line"></div>
         </div>
+        {/* <div className="timeline"></div> */}
       </div>
 
     </div>
