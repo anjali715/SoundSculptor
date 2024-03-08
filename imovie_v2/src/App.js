@@ -107,6 +107,15 @@ const App = () => {
     wavesurferInstances.current.forEach(wavesurfer => wavesurfer.setVolume(event.target.value / 100));
   };
 
+  const handleDrop = (event) => {
+    event.preventDefault();
+    addAudioTrackFromFile(event.dataTransfer.files);
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="App">
       <div className="header">
@@ -126,7 +135,7 @@ const App = () => {
       </div>
 
       <div className="mainportion">
-        <div className="file-upload">
+        <div className="file-upload" onDrop={handleDrop} onDragOver={handleDragOver}>
           <img src={folderImage} alt="Folder Icon" className="folder-icon" />
           <label htmlFor="music-file" className="upload-label">
             Drop the music to start jamming, or click to select
