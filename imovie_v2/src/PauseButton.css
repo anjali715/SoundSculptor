@@ -1,0 +1,46 @@
+  .pause-button {
+    background-color: white !important; /* White interior */
+    border: 2px solid #ffffff; /* Gray border */
+    border-radius: 10%; /* Circular shape */
+    width: 58px; /* Button width */
+    height: 48px; /* Button height */
+    cursor: pointer; /* Pointer cursor on hover */
+    position: relative; /* Position relative for triangle */
+    transition: box-shadow 0.3s; /* Smooth transition for box shadow */
+    margin-left:35px;
+  }
+  
+  .pause-button::before,
+  .pause-button::after {
+    content: '';
+    position: absolute;
+    background-color: #f3efef;
+  }
+  
+  .pause-button::before {
+    width: 5px;
+    height: 20px;
+    top: 30%;
+    left: 35%;
+    border-left: 1px solid black; /* Left border */
+    border-right: 1px solid black; /* Right border */
+    border-bottom: 1px solid black; /* Bottom border */
+    border-top: 1px solid black; /* Remove top border */
+  }
+  
+  .pause-button::after {
+    width: 5px;
+    height: 20px;
+    top: 30%;
+    right: 35%;
+    border-left: 1px solid black; /* Left border */
+    border-right: 1px solid black; /* Right border */
+    border-bottom: 1px solid black; /* Bottom border */
+    border-top: 1px solid black; /* Remove top border */
+  }
+  
+  /* Add shadow on hover */
+.pause-button:hover {
+  box-shadow: 0px 0px 5px 0px rgba(186, 186, 186, 0.75); 
+  background-color: transparent;
+}
