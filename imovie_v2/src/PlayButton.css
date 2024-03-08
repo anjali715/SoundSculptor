@@ -2,8 +2,8 @@
 .play-button {
     /* background-color: transparent; Transparent background color */
     background-color: white !important; /* White interior */
-    border: 2px solid #f0eded; /* Gray border */
-    border-radius: 10%; /* Circular shape */
+    border: 1px solid #e9e7e7; /* Gray border */
+    border-radius: 15%; /* Circular shape */
     width: 58px; /* Button width */
     height: 48px; /* Button height */
     cursor: pointer; /* Pointer cursor on hover */
@@ -15,6 +15,14 @@
 /* Add shadow on hover */
 .play-button:hover {
     box-shadow: 0px 0px 5px 0px rgba(186, 186, 186, 0.75); 
+  }
+
+  .playbutton {
+    top: 22%;
+    left: 28%;
+    width: 25px;
+    height: 25px;
+    position:absolute;
   }
 
   .triangle {

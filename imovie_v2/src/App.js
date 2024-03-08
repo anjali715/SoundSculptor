@@ -14,6 +14,7 @@ const App = () => {
   const wavesurferInstances = useRef([]);
   const waveformContainers = useRef([]);
   const progressLineRef = useRef(null); // Reference to the progress line element
+  const timelineRef = useRef(null); // Reference to the timeline element
 
   const destroyWaveSurfers = useCallback(() => {
     wavesurferInstances.current.forEach(wavesurfer => wavesurfer.destroy());
@@ -40,9 +41,13 @@ const App = () => {
 
       wavesurfer.on('ready', () => {
         const duration = wavesurfer.getDuration();
+        // Inside the useEffect hook where you set the longestDuration
         if (duration > longestDuration) {
           setLongestDuration(duration);
           progressLineRef.current.style.height = `${document.querySelector('.audio-tracks').offsetHeight}px`; // Adjust the height of the progress line
+          if (timelineRef.current) {
+            timelineRef.current.style.display = 'block'; // Show the timeline if audio tracks are present
+          }
         }
         waveformContainer.style.width = `${(duration / longestDuration) * 100}%`;
 
@@ -106,7 +111,6 @@ const App = () => {
     <div className="App">
       <div className="header">
         <img src={soundsculptorLogo} alt="Soundsculptor Logo" className="logo" />
-        <h1 className="title-text">SOUNDSCULPTOR</h1>
         <div className="headerright">
           <input
             type="range"
@@ -141,8 +145,8 @@ const App = () => {
             </div>
           ))}
           <div ref={progressLineRef} className="progress-line"></div>
+          <div ref={timelineRef} className="timeline"></div> {/* Added ref to timeline */}
         </div>
-        {/* <div className="timeline"></div> */}
       </div>
 
     </div>
